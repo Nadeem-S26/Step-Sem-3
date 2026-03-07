@@ -1,0 +1,17 @@
+@startuml Object Diagram – Bank, Customer, and Account (Runtime Instances)
+
+object "bank1 : Bank\nname = City Bank" as bank1
+
+object "cust1 : Customer\nname = John Doe\ncustomerId = 101" as cust1
+object "cust2 : Customer\nname = Jane Smith\ncustomerId = 102" as cust2
+
+object "acc1 : Account\naccountNo = 1001\nbalance = 5000" as acc1
+object "acc2 : Account\naccountNo = 1002\nbalance = 8000" as acc2
+
+bank1 -- cust1
+bank1 -- cust2
+
+cust1 -- acc1
+cust2 -- acc2
+
+@enduml

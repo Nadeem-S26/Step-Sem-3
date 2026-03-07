@@ -1,0 +1,30 @@
+@startuml Class Diagram - Bank Account System
+
+class Bank {
+    - bankName : String
+    - branchCode : String
+    + addCustomer(c : Customer)
+    + removeCustomer(c : Customer)
+    + displayCustomers() : void
+}
+
+class Customer {
+    - customerId : int
+    - name : String
+    - email : String
+    + openAccount(a : Account)
+    + closeAccount(a : Account)
+    + getCustomerInfo() : void
+}
+
+class Account {
+    - accountNumber : int
+    - balance : double
+    + deposit(amount : double)
+    + withdraw(amount : double)
+    + getBalance() : double
+}
+
+Bank "1" -- "many" Customer : association
+Customer "1" o-- "many" Account : aggregation
+@enduml

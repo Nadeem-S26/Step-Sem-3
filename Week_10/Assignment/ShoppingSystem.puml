@@ -1,0 +1,28 @@
+@startuml Sequence Diagram – Online Shopping System
+
+actor Customer
+participant Cart
+participant PaymentService
+participant OrderService
+
+== Adding items to cart ==
+Customer -> Cart: addItem(productId, quantity)
+Cart --> Customer: itemAddedConfirmation
+
+== Proceed to checkout ==
+Customer -> Cart: checkout()
+Cart -> PaymentService: makePayment(amount)
+activate PaymentService
+
+PaymentService --> Cart: paymentStatus(success)
+deactivate PaymentService
+
+== Order confirmation ==
+Cart -> OrderService: createOrder(cartDetails)
+activate OrderService
+OrderService --> Cart: orderConfirmed(orderId)
+deactivate OrderService
+
+Cart --> Customer: displayOrderConfirmation(orderId)
+
+@enduml
