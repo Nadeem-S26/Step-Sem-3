@@ -1,0 +1,29 @@
+@startuml Sequence Diagram - Online Order Process
+
+actor Customer
+participant OrderService
+participant PaymentGateway
+participant InventoryService
+
+Customer -> OrderService : placeOrder(orderDetails)
+activate OrderService
+
+OrderService -> InventoryService : checkAvailability(productId)
+activate InventoryService
+InventoryService --> OrderService : availabilityStatus
+deactivate InventoryService
+
+OrderService -> PaymentGateway : processPayment(paymentInfo)
+activate PaymentGateway
+PaymentGateway --> OrderService : paymentConfirmation
+deactivate PaymentGateway
+
+OrderService -> InventoryService : updateStock(productId)
+activate InventoryService
+InventoryService --> OrderService : stockUpdated
+deactivate InventoryService
+
+OrderService --> Customer : orderConfirmation
+deactivate OrderService
+
+@enduml

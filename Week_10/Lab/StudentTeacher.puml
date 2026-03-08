@@ -1,0 +1,16 @@
+@startuml StudentTeacherRelationship
+
+object "teacher1 : Teacher\nname = Karthik\nsubject = Mathematics" as teacher1
+object "teacher2 : Teacher\nname = Priya\nsubject = Physics" as teacher2
+
+object "student1 : Student\nname = Rahul\nrollNo = 101" as student1
+object "student2 : Student\nname = Sneha\nrollNo = 102" as student2
+object "student3 : Student\nname = Anand\nrollNo = 103" as student3
+object "student4 : Student\nname = Meena\nrollNo = 104" as student4
+
+teacher1 -- student1 : guides >
+teacher1 -- student2 : guides >
+teacher2 -- student3 : guides >
+teacher2 -- student4 : guides >
+
+@enduml

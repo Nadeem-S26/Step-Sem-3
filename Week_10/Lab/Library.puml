@@ -1,0 +1,34 @@
+@startuml LinbraryManagementSystem
+title UML Class Diagram - Library Management System
+
+class Book {
+    - bookId : int
+    - title : String
+    - author : String
+    - available : boolean
+    + issueBook() : void
+    + returnBook() : void
+    + showDetails() : void
+}
+
+class Member {
+    - memberId : int
+    - name : String
+    - email : String
+    + borrowBook(b : Book) : void
+    + returnBook(b : Book) : void
+    + viewBorrowedBooks() : void
+}
+
+class Librarian {
+    - librarianId : int
+    - name : String
+    + addBook(b : Book) : void
+    + removeBook(b : Book) : void
+    + manageMember(m : Member) : void
+}
+
+Member "1" --> "0..*" Book : borrows >
+Librarian o-- "0..*" Book : manages >
+
+@enduml
